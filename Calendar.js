@@ -231,6 +231,15 @@ export default class Calendar extends Component {
       endDateText,
       endWeekdayText
     } = this.state;
+
+    const {
+      mainColor = '#15aaaa',
+      subColor = '#fff',
+      borderColor = 'rgba(255, 255, 255, 0.50)'
+    } = this.props.color;
+
+    let subFontColor = {color: subColor};
+    
     if(this.props.singleDate==true) {
       return (
         <View style={styles.result}>
