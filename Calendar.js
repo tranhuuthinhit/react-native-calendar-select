@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'props-types'
+import PropTypes from 'prop-types'
 import {
   View,
   Text,
