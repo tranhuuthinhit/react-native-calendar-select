@@ -2,7 +2,8 @@
  * Created by TinySymphony on 2017-05-08.
  */
 
-import React, {PropTypes, Component} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'props-types'
 import {
   View,
   Text,
@@ -222,6 +223,52 @@ export default class Calendar extends Component {
     });
     this.close();
   }
+
+  _renderHeaderDay() {
+    const {
+      startDateText,
+      startWeekdayText,
+      endDateText,
+      endWeekdayText
+    } = this.state;
+    if(this.props.singleDate==true) {
+      return (
+        <View style={styles.result}>
+          <View style={styles.resultPart}>
+            <Text style={[styles.resultText, styles.startText, subFontColor]}>
+              {startDateText || this._i18n('start', 'text')}
+            </Text>
+            <Text style={[styles.resultText, styles.startText, subFontColor]}>
+              {startWeekdayText || this._i18n('date', 'text')}
+            </Text>
+          </View>
+        </View>
+      )
+    }
+
+    return (
+      <View style={styles.result}>
+        <View style={styles.resultPart}>
+          <Text style={[styles.resultText, styles.startText, subFontColor]}>
+            {startDateText || this._i18n('start', 'text')}
+          </Text>
+          <Text style={[styles.resultText, styles.startText, subFontColor]}>
+            {startWeekdayText || this._i18n('date', 'text')}
+          </Text>
+        </View>
+        <View style={[styles.resultSlash, subBack]}/>
+        <View style={styles.resultPart}>
+          <Text style={[styles.resultText, styles.endText, subFontColor]}>
+            {endDateText || this._i18n('end', 'text')}
+          </Text>
+          <Text style={[styles.resultText, styles.endText, subFontColor]}>
+            {endWeekdayText || this._i18n('date', 'text')}
+          </Text>
+        </View>
+      </View>
+    )
+  }
+
   render () {
     const {
       startDate,
@@ -266,25 +313,7 @@ export default class Calendar extends Component {
               <Text style={[styles.clearText, subFontColor]}>{this._i18n('clear', 'text')}</Text>
             </TouchableHighlight>}
           </View>
-          <View style={styles.result}>
-            <View style={styles.resultPart}>
-              <Text style={[styles.resultText, styles.startText, subFontColor]}>
-                {startDateText || this._i18n('start', 'text')}
-              </Text>
-              <Text style={[styles.resultText, styles.startText, subFontColor]}>
-                {startWeekdayText || this._i18n('date', 'text')}
-              </Text>
-            </View>
-            <View style={[styles.resultSlash, subBack]}/>
-            <View style={styles.resultPart}>
-              <Text style={[styles.resultText, styles.endText, subFontColor]}>
-                {endDateText || this._i18n('end', 'text')}
-              </Text>
-              <Text style={[styles.resultText, styles.endText, subFontColor]}>
-                {endWeekdayText || this._i18n('date', 'text')}
-              </Text>
-            </View>
-          </View>
+          {this._renderHeaderDay()}
           <View style={styles.week}>
             {[7, 1, 2, 3, 4, 5, 6].map(item =>
               <Text style={[styles.weekText, subFontColor]}　key={item}>{this._i18n(item, 'w')}</Text>
