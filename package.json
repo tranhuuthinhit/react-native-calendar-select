@@ -21,7 +21,8 @@
 		"calendar"
 	],
 	"dependencies": {
-		"moment": "^2.18.1"
+		"moment": "^2.18.1",
+		"prop-types": "^15.6.1"
 	},
 	"peerDependencies": {
 		"prop-types": "^15.6.0",
@@ -29,10 +30,10 @@
 		"react-native": "^0.41.2"
 	},
 	"devDependencies": {
-		"coveralls": "^2.13.1",
-		"cz-conventional-changelog": "^2.0.0",
 		"babel-jest": "21.2.0",
 		"babel-preset-react-native": "4.0.0",
+		"coveralls": "^2.13.1",
+		"cz-conventional-changelog": "^2.0.0",
 		"enzyme": "^3.2.0",
 		"enzyme-adapter-react-16": "^1.1.0",
 		"istanbul": "^0.4.5",
